@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mell Stars — скачай и играй</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #1a2f3f 0%, #2c4b60 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1100px;
+            padding: 20px;
+            width: 100%;
+        }
+
+        /* Шапка */
+        .header {
+            text-align: center;
+            padding: 40px 0 20px 0;
+        }
+
+        .header h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            text-shadow: 5px 5px 0 #ffa500, 8px 8px 0 rgba(0,0,0,0.2);
+            letter-spacing: 2px;
+            color: #fff3d1;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            background: rgba(0,0,0,0.3);
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+            margin-top: 10px;
+            border: 2px solid #ffb347;
+        }
+
+        /* Кнопка скачать */
+        .download-section {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0 50px 0;
+        }
+
+        .download-btn {
+            background: #f5a623;
+            border: none;
+            padding: 20px 60px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1e2b38;
+            border-radius: 60px;
+            box-shadow: 0 15px 0 #b16d0e, 0 20px 30px rgba(0,0,0,0.5);
+            cursor: pointer;
+            transition: 0.1s linear;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            border: 3px solid #ffd966;
+        }
+
+        .download-btn:active {
+            transform: translateY(15px);
+            box-shadow: 0 5px 0 #b16d0e, 0 15px 25px rgba(0,0,0,0.5);
+        }
+
+        .download-btn:hover {
+            background: #ffb347;
+        }
+
+        /* Карточки с описанием */
+        .info-block {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 2px solid #f5a623;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .info-block h2 {
+            font-size: 2.2rem;
+            border-left: 15px solid #f5a623;
+            padding-left: 20px;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 0 #00000050;
+        }
+
+        .game-desc {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background: #1e3a4a;
+            padding: 20px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+        }
+
+        /* Сетка для персонажей и режимов */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: #2d4e62;
+            border-radius: 40px;
+            padding: 20px;
+            flex: 1 1 250px;
+            text-align: center;
+            border: 3px solid #f5a623;
+            transition: all 0.3s;
+            box-shadow: 0 8px 0 #9e691b;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 13px 0 #9e691b;
+        }
+
+        .card .emoji-big {
+            font-size: 5rem;
+            background: #1e3a4a;
+            width: 120px;
+            height: 120px;
+            line-height: 120px;
+            border-radius: 60px;
+            margin: 0 auto 20px auto;
+            border: 4px solid #ffb347;
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 1.1rem;
+            background: #17323f;
+            padding: 10px;
+            border-radius: 30px;
+        }
+
+        .badge {
+            background: #f5a623;
+            color: #1e2b38;
+            font-weight: bold;
+            padding: 5px 15px;
+            border-radius: 40px;
+            display: inline-block;
+            margin-top: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* Режимы */
+        .mode-card {
+            background: #2d4e62;
+            border-radius: 40px;
+            padding: 20px;
+            flex: 1 1 300px;
+            border: 3px solid #4caf50;
+            box-shadow: 0 8px 0 #1f6b2b;
+        }
+
+        .mode-dev {
+            border-color: #ff4444;
+            box-shadow: 0 8px 0 #992222;
+            opacity: 0.9;
+        }
+
+        .dev-label {
+            background: #ff4444;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            padding: 20px;
+            color: #b0d4e0;
+            border-top: 2px dashed #f5a623;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 { font-size: 3rem; }
+            .download-btn { font-size: 1.4rem; padding: 15px 30px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Шапка -->
+        <div class="header">
+            <h1>MELL STARS</h1>
+            <p>🍔 Клония Brawl Stars з экшеном и бургерами! 🍔</p>
+        </div>
+
+        <!-- Скачать -->
+        <div class="download-section">
+            <button class="download-btn" onclick="alert('https://github.com/Ertuy21/MellStars.github.io/raw/main/MellStars.apk')">
+                ⬇️ СКАЧАТЬ ИГРУ ⬇️
+            </button>
+        </div>
+
+        <!-- Описание игры -->
+        <div class="info-block">
+            <h2>📖 Что такое Mell Stars?</h2>
+            <div class="game-desc">
+                <p style="font-size: 1.4rem;"><strong>Mell Stars</strong> — это динамичный клон Brawl Stars, где вместо бойцов — <strong>меллстрои</strong>Да да я уже красный культурно получится! Графика, звуки — всё как в любимой игре, но с собственным шармом. Три уникальных персонажа (спойлер: они одинаковые по механике, но обложки бомбезные!).</p>
+            </div>
+        </div>
+
+        <!-- Персонажи -->
+        <div class="info-block">
+            <h2>👥 Бойцы (Меллстрои)</h2>
+            <div class="row">
+                <div class="card">
+                    <div class="emoji-big">🦸‍♂️</div>
+                    <h3>Бурмалда 01</h3>
+                    <p>Заяц. Любит яйца)))</p>
+                    <span class="badge">Обложка: Меллстрой</span>
+                </div>
+                <div class="card">
+                    <div class="emoji-big">🧑‍🎤</div>
+                    <h3>Я уже красный 02</h3>
+                    <p>Он просто красный, но почему не синий? Да я хз чтобы бургеры удобнее было хавать☠</p>
+                    <span class="badge">Обложка: Мистик</span>
+                </div>
+                <div class="card">
+                    <div class="emoji-big">👨‍🍳</div>
+                    <h3>Артур 03</h3>
+                    <p>Привет артур</p>
+                    <span class="badge">Обложка: БУРГЕРЫ</span>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 20px; background: #f5a62320; padding: 10px; border-radius: 30px;">
+                ⚡ Персонажи ничем не отличаются, только обложкой! Выбирай любого.
+            </p>
+        </div>
+
+        <!-- Режимы игры -->
+        <div class="info-block">
+            <h2>🎮 Режимы игры</h2>
+            <div class="row">
+                <!-- Режим 1: АМ АМ АМ -->
+                <div class="mode-card">
+                    <div style="font-size: 4rem;">🍔🍔🍔</div>
+                    <h3 style="font-size: 2rem;">Ам Ам Ам</h3>
+                    <p style="font-size: 1.2rem; margin: 15px 0;">
+                        Кушай бургеры, как задира боб, но не ешь броколи или ты не получишь Стейси.
+                    </p>
+                    <div class="badge">Доступно сейчас</div>
+                </div>
+
+                <!-- Режим 2: В разработке -->
+                <div class="mode-card mode-dev">
+                    <div style="font-size: 4rem;">🥚🥚🥚</div>
+                    <div class="dev-label">🔧 В РАЗРАБОТКЕ</div>
+                    <h3 style="font-size: 2rem;">Бурмалда</h3>
+                    <p style="font-size: 1.2rem;">
+                        Скоро тут будет режим, где нужно ловить яйца! Падающие, летящие, maybe золотые? Собирай больше всех и становись чемпионом!
+                    </p>
+                    <p style="margin-top: 15px; background: #992222; padding: 8px; border-radius: 30px;">Скоро...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Доп. информация -->
+        <div class="info-block" style="text-align: center;">
+            <h2>📌 О игре</h2>
+            <p style="font-size: 1.3rem;">Mell Stars — фанатский проект по мотивам Brawl Stars. Все персонажи вымышлены, все бургеры съедены.</p>
+            <p style="font-size: 1.2rem; margin-top: 20px;">🔸 Версия: 0.5 (Beta) 🔸 Жанр: Экшен, аркада 🔸 Платформа: Android / PC</p>
+        </div>
+
+        <!-- Подвал -->
+        <footer>
+            <p>© 2024 Mell Stars. Не для коммерческого использования. </p>
+            <p>🍔 Если хочешь поддержать — съешь бургер! 🍔</p>
+        </footer>
+    </div>
+
+    <script>
+        // Чтобы кнопка скачивания не была просто заглушкой
+        // Можно заменить alert на реальный переход, если положишь файл рядом
+        document.querySelector('.download-btn').addEventListener('click', function() {
+            // ЗДЕСЬ МОЖНО ВСТАВИТЬ ССЫЛКУ НА ФАЙЛ
+            // window.location.href = 'mell-stars.apk';
+            alert('Файл игры не загружен на сервер, но ты можешь положить его рядом с этим файлом и поменять ссылку в коде :)');
+        });
+    </script>
+</body>
+</html>
