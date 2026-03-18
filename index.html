@@ -217,12 +217,12 @@
         <!-- Шапка -->
         <div class="header">
             <h1>MELL STARS</h1>
-            <p>Клон Brawl Stars с Меллстроем</p>
+            <p>🍔 Клон Brawl Stars с Меллстроем 🍔</p>
         </div>
 
         <!-- Скачать -->
         <div class="download-section">
-            <button class="download-btn" onclick="alert('https://github.com/Ertuy21/MellStars.github.io/raw/main/MellStars.apk')">
+            <button class="download-btn" onclick="window.location.href='MellStars.apk'">
                 ⬇️ СКАЧАТЬ ИГРУ ⬇️
             </button>
         </div>
@@ -231,7 +231,7 @@
         <div class="info-block">
             <h2>📖 Что такое Mell Stars?</h2>
             <div class="game-desc">
-                <p style="font-size: 1.4rem;"><strong>Mell Stars</strong> — это динамичный клон Brawl Stars, где вместо бойцов — <strong>меллстрои</strong>Да да я уже красный культурно получится! Графика, звуки — всё как в любимой игре, но с собственным шармом. Три уникальных персонажа (спойлер: они одинаковые по механике, но обложки бомбезные!).</p>
+                <p style="font-size: 1.4rem;"><strong>Mell Stars</strong> — это динамичный клон Brawl Stars, где вместо бойцов — <strong>меллстрои</strong>! Да, да, я уже красный культурно получится! Графика, звуки — всё как в любимой игре, но с собственным шармом. Три уникальных персонажа (спойлер: они одинаковые по механике, но обложки бомбезные!).</p>
             </div>
         </div>
 
@@ -299,19 +299,15 @@
 
         <!-- Подвал -->
         <footer>
-            <p>© 2024 Mell Stars. Не для коммерческого использования. </p>
+            <p>© 2024 Mell Stars. Не для коммерческого использования.</p>
             <p>🍔 Если хочешь поддержать — съешь бургер! 🍔</p>
         </footer>
     </div>
 
     <script>
-        // Чтобы кнопка скачивания не была просто заглушкой
-        // Можно заменить alert на реальный переход, если положишь файл рядом
-        document.querySelector('.download-btn').addEventListener('click', function() {
-            // ЗДЕСЬ МОЖНО ВСТАВИТЬ ССЫЛКУ НА ФАЙЛ
-            // window.location.href = 'mell-stars.apk';
-            alert('Файл игры не загружен на сервер, но ты можешь положить его рядом с этим файлом и поменять ссылку в коде :)');
-        });
+        // Кнопка теперь работает через onclick в HTML
+        // Дополнительный код не нужен, но оставлю для совместимости
+        console.log('Сайт Mell Stars загружен!');
     </script>
 </body>
 </html>
